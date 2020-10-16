@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Analog Clock</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="backgrnd"></div>
+    <div class="clock">
+      <div class="clock-face">
+        <div class="timing">
+          <div id="up">12</div>
+          <div id="down">6</div>
+          <div id="right">3</div>
+          <div id="left">9</div>
+        </div>
+        <div class="center"></div>
+        <div class="hand hour-hand"></div>
+        <div class="hand min-hand"></div>
+        <div class="hand second-hand"></div>
+      </div>
+    </div>
+    <script>
+      const secondHand = document.querySelector(".second-hand");
+      const minsHand = document.querySelector(".min-hand");
+      const hourHand = document.querySelector(".hour-hand");
+
+      setInterval(() => {
+        date = new Date();
+        htime = date.getHours();
+        mtime = date.getMinutes();
+        stime = date.getSeconds();
+        hrot = 30 * htime + mtime / 2;
+        mrot = 6 * mtime;
+        srot = 6 * stime;
+
+        hourHand.style.transform = `rotate(${hrot}deg)`;
+        minsHand.style.transform = `rotate(${mrot}deg)`;
+        secondHand.style.transform = `rotate(${srot}deg)`;
+      }, 1000);
+    </script>
+  </body>
+</html>
